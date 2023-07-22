@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView.vue';
+import CarrouselComponent from '@/components/CarrouselComponent.vue';
+import InscripcionView from '@/views/InscripcionView.vue';
+import NotFoundView from '@/views/NotFoundView.vue';
 
 Vue.use(VueRouter)
 
@@ -11,6 +14,16 @@ const routes = [
     component: HomeView
   },
   {
+    path:'/carrousel',
+    name: 'carrousel',
+    component: CarrouselComponent
+  },
+  {
+    path: '/inscripcion',
+    name: 'inscripcion',
+    component: InscripcionView
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
@@ -19,6 +32,11 @@ const routes = [
     component: function () {
       return import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
     }
+  },
+  {
+    path:'/:catchAll(.*)',
+    name:'notfound',
+    component:NotFoundView
   }
 ]
 
